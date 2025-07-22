@@ -18,28 +18,26 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
-      
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      
-      - name: Install Dependencies
+
+      - name: Install API Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r api/blobuploader/requirements.txt
 
       - name: Build And Deploy
-        id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "/static"
-          api_location: "/api"
-          output_location: ""
-          app_build_command: ""
+          api_location: "/api/blobuploader"
+          output_location: "/"
           api_build_command: "python -m pip install --upgrade pip && pip install -r requirements.txt"
 
   close_pull_request_job:
