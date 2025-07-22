@@ -40,8 +40,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "/static"
-          api_location: "/api/blobuploader"
-          output_location: "/output"
+          api_location: "/api"
+          output_location: "/"
           api_build_command: "python -m pip install --upgrade pip && pip install -r api/requirements.txt" # Ensure the API dependencies are installed before deployment
 
   close_pull_request_job:
