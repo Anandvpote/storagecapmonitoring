@@ -38,7 +38,7 @@ jobs:
           app_location: "/static"
           api_location: "/api/blobuploader"
           output_location: "/"
-          api_build_command: "python -m pip install --upgrade pip && pip install -r requirements.txt"
+          api_build_command: "python -m pip install --upgrade pip && pip install -r api/requirements.txt" # Ensure the API dependencies are installed before deployment
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
